@@ -1,5 +1,11 @@
 import sagemaker
+import argparse
 from sagemaker.tensorflow import TensorFlow
+parser = argparse.ArgumentParser()
+parser.add_argument("--node-count", type=int, help="number of nodes to train", default=4)
+parser.add_argument("--python", help="python version", default="py3")
+
+args = parser.parse_args()
 
 sagemaker_session = sagemaker.Session()
 
@@ -9,12 +15,12 @@ tf_estimator = TensorFlow(
     entry_point="singletrain.sh",
     source_dir="../benchmarks/tr-cpu/tf",
     role="SageMakerRole",
-    train_instance_count=4,
+    train_instance_count=args.node_count,
     train_instance_type="ml.c5.18xlarge",
     image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:1.15.0-py3-cpu-with-horovod-build",
     #image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:1.13-py3-cpu-with-horovod-build-2019-05-25-00-41-18",
     #image_name="520713654638.dkr.ecr.us-east-1.amazonaws.com/sagemaker-tensorflow-scriptmode:1.13-cpu-py3",
-    py_version="py3",
+    py_version=args.python,
     framework_version="1.15.0",
     distributions={
         "mpi": {

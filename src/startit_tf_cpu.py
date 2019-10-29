@@ -11,10 +11,11 @@ tf_estimator = TensorFlow(
     role="SageMakerRole",
     train_instance_count=4,
     train_instance_type="ml.c5.18xlarge",
-    # image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:1.13-py3-cpu-with-horovod-build-2019-05-25-00-41-18",
-    image_name="520713654638.dkr.ecr.us-east-1.amazonaws.com/sagemaker-tensorflow-scriptmode:1.13-cpu-py3",
+    image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:1.15.0-py3-cpu-with-horovod-build-2019-10-28-22-00-32",
+    #image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:1.13-py3-cpu-with-horovod-build-2019-05-25-00-41-18",
+    #image_name="520713654638.dkr.ecr.us-east-1.amazonaws.com/sagemaker-tensorflow-scriptmode:1.13-cpu-py3",
     py_version="py3",
-    framework_version="1.13",
+    framework_version="1.15.0",
     distributions={
         "mpi": {
             "enabled": True,
@@ -22,7 +23,7 @@ tf_estimator = TensorFlow(
             "custom_mpi_options": "-x HOROVOD_HIERARCHICAL_ALLREDUCE=1 -x HOROVOD_FUSION_THRESHOLD=16777216 -x TF_CPP_MIN_LOG_LEVEL=0",
         }
     },
-    output_path="s3://bai-results-sagemaker"
+    output_path="s3://asimov-bai-results-sagemaker"
     # subnets=["subnet-07735e63c73eddfc0", "subnet-0c027b8eafad8d482"],
     # subnets=["subnet-07735e63c73eddfc0"],
     # security_group_ids=["sg-0a2531f240064758a", "sg-03a2f31c5c8cd5a39"],

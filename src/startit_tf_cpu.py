@@ -17,11 +17,11 @@ tf_estimator = TensorFlow(
     role="SageMakerRole",
     train_instance_count=args.node_count,
     train_instance_type="ml.c5.18xlarge",
-    image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:1.15.0-" + args.python + "-cpu-with-horovod-build",
+    image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:2.1.0-" + args.python + "-cpu-with-horovod-build",
     #image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:1.13-py3-cpu-with-horovod-build-2019-05-25-00-41-18",
     #image_name="520713654638.dkr.ecr.us-east-1.amazonaws.com/sagemaker-tensorflow-scriptmode:1.13-cpu-py3",
     py_version=args.python,
-    framework_version="1.15.0",
+    framework_version="2.1.0",
     distributions={
         "mpi": {
             "enabled": True,

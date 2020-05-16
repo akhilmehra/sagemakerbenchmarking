@@ -21,5 +21,5 @@ export TENSORFLOW_SESSION_PARALLELISM=9
 export KMP_BLOCKTIME=1
 export KMP_SETTINGS=0
 
-python -W ignore horovod/examples/tensorflow_synthetic_benchmark.py --no-cuda --num-warmup-batche 10 --num-iters 10 \
+python -W ignore horovod/examples/tensorflow2_synthetic_benchmark.py --no-cuda --num-warmup-batches 10 --num-iters 10 \
 --model ResNet50

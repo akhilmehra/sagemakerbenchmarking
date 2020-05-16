@@ -17,9 +17,9 @@ tf_estimator = TensorFlow(
     role="SageMakerRole",
     train_instance_count=args.node_count,
     train_instance_type="ml.p3.16xlarge",
-    image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:1.15.0-" + args.python + "-gpu-with-horovod-build",
+    image_name="841569659894.dkr.ecr.us-east-1.amazonaws.com/beta-tensorflow-training:2.1.0-" + args.python + "-gpu-with-horovod-build",
     py_version=args.python,
-    framework_version="1.15.0",
+    framework_version="2.1.0",
       distributions={
           "mpi": {
               "enabled": True,
